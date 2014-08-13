@@ -9,8 +9,9 @@ We will use it mainly as simple time picker, time duration picker and maybe as c
 ##Usage:
 ```
 $('input').segmentPicker({
-    segments: [ *segment, segment, ...* ]
-})```
+    segments: [ segment, segment, ... ]
+})
+```
 
 Possible segments
 | Segment type  | Description   | Example |
@@ -25,10 +26,12 @@ Possible segments
 ```javascript
 $('input').segmentPicker({
     segments: [{min: 1, max: 12}, ":", {min: 0, max: 59}, " ", ["am", "pm"]]
-})```
+})
+```
 
 ### floating point picker:
 ```javascript
 $('input').segmentPicker({
     segments: [{min: 0, max: 999}, ".", {min: 0, max: 99}]
-})```
+})
+```
