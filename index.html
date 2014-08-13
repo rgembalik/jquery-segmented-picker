@@ -21,6 +21,10 @@
                 segments: [{min: 0, max: 24}, "h ", {min: 0, max: 59}, "m"]
             });
 
+            $('#currency-picker').segmentPicker({
+                segments: [{min: 1, max: 24}, ".", {min: 0, max: 99}, " ", ["USD", "EUR"]]
+            });
+
             $('#speed-picker').segmentPicker({
                 segments: [{min: 0, max: 999}, ".", {min: 0, max: 99}, " km/h"]
             }).on('change keyup', function ()
@@ -63,6 +67,13 @@
     <label>
         Duration picker - for stoppers etc.
         <input type="text" id="duration-picker" value="12h 17m"/>
+    </label>
+</div>
+
+<div>
+    <label>
+        Currency picker
+        <input type="text" id="currency-picker" value="12.99 USD"/>
     </label>
 </div>
 </body>

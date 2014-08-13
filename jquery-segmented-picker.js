@@ -24,7 +24,7 @@
         {
         };
 
-        this.decrement = function ()
+        this.increment = function ()
         {
         };
         this.setUserInput = function ()
@@ -171,7 +171,7 @@
         {
             for (var i = 0; i < definition.length; i++)
             {
-                if (definition[i].indexOf(character) > -1)
+                if (definition[i].toLowerCase().indexOf(character.toLowerCase()) > -1)
                 {
                     return true;
                 }
