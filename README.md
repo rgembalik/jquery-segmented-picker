@@ -7,7 +7,9 @@ The main idea in it is to avoid showing complicated popups while there is possib
 We will use it mainly as simple time picker, time duration picker and maybe as currency picker.
 
 ##Desclimer
-This plugin is nowhere near ready. There will be additional stuff like up/down buttons which will help provide spinner functionality. If you have any idea, please share it with me or later -when I will achieve functionality I am looking for - fork the stuff and come back with pull request.
+This plugin is nowhere near ready. There will be additional stuff like up/down buttons which will help provide spinner functionality and a ton of bug fixes.
+We are sharing it simply to let others use it and gather feedback if anyone would like to share one.
+If you have any idea, please share it with me or later -when I will achieve functionality I am looking for - fork the stuff and come back with pull request.
 
 ##Usage:
 ```
