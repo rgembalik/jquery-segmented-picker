@@ -9,7 +9,19 @@
     <script type="text/javascript">
         $(function ()
         {
-            $('input').segmentPicker({
+            $('#12h-picker').segmentPicker({
+                segments: [{min: 1, max: 12}, ":", {min: 0, max: 59}, " ", ["am", "pm"]]
+            });
+
+            $('#24h-picker').segmentPicker({
+                segments: [{min: 0, max: 23}, ":", {min: 0, max: 59}]
+            });
+
+            $('#duration-picker').segmentPicker({
+                segments: [{min: 0, max: 24}, "h ", {min: 0, max: 59}, "m"]
+            });
+
+            $('#speed-picker').segmentPicker({
                 //segments: [ {min: 0, max: 23 }, ":", { min: 0, max: 59 }, " ", ["am", "pm"] ]
                 //segments: [{min: 1, max: 12}, ":", {min: 0, max: 59}, " ", ["am", "pm"]]
                 //segments: [{min: 0, max: 24}, "h ", {min: 0, max: 59}, "m"]
@@ -20,10 +32,42 @@
             });
         });
     </script>
+    <style>
+        body{
+            font-family: "Helvetica Neue", Helvetica, 'Segoe UI', Arial, sans-serif;
+        }
+        div
+        {
+            margin: 15px;
+        }
+    </style>
 </head>
 
 <body>
-<input type="text" value="123.23 km/h"/>
+<div>
+    <label>
+        Speed picker
+        <input type="text" id="speed-picker" value="123.23 km/h"/>
+    </label>
+</div>
+<div>
+    <label>
+        12h time picker
+        <input type="text" id="12h-picker" value="12:30 pm"/>
+    </label>
+</div>
+<div>
+    <label>
+        24h time picker
+        <input type="text" id="24h-picker" value="19:00"/>
+    </label>
+</div>
+<div>
+    <label>
+        Duration picker - for stopers etc
+        <input type="text" id="duration-picker" value="12h 17m"/>
+    </label>
+</div>
 </body>
 
 </html>
