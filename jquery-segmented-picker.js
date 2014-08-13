@@ -20,7 +20,11 @@
         {
         };
 
-        this.delUserInput = function ()
+        this.increment = function ()
+        {
+        };
+
+        this.decrement = function ()
         {
         };
         this.setUserInput = function ()
@@ -57,7 +61,7 @@
         };
         this.getValue = function ()
         {
-            return ("0000" + userInput).slice(-2);
+            return ("0000" + userInput).slice(-this.length);
         };
 
         this.accepts = function (character)
