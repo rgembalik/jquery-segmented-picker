@@ -8,7 +8,7 @@ That way you can incorporate it in any more complex forms without worrying about
 
 We will use it mainly as simple time picker, time duration picker and maybe as currency picker.
 
-##Desclimer
+##Disclaimer
 This plugin is nowhere near ready. Also it is full of nasty insects. There will be additional stuff like up/down buttons
 which will help provide spinner functionality and a ton of bug fixes.
 
