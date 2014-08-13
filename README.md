@@ -12,7 +12,7 @@ This plugin is nowhere near ready. Also it is full of nasty insects. There will 
 which will help provide spinner functionality and a ton of bug fixes.
 
 We are sharing it simply to let others use it and gather feedback if anyone would like to share one.
-If you have any idea, please share it with me or later -when I will achieve functionality I am looking for - fork the stuff and come back with pull request.
+If you have any idea, please share it with me or later fork the stuff and come back with pull request (especially after when we will achieve functionality we need).
 
 ##Usage:
 ```
