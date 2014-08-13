@@ -10,6 +10,7 @@ We will use it mainly as simple time picker, time duration picker and maybe as c
 ##Desclimer
 This plugin is nowhere near ready. Also it is full of nasty insects. There will be additional stuff like up/down buttons
 which will help provide spinner functionality and a ton of bug fixes.
+
 We are sharing it simply to let others use it and gather feedback if anyone would like to share one.
 If you have any idea, please share it with me or later -when I will achieve functionality I am looking for - fork the stuff and come back with pull request.
 
