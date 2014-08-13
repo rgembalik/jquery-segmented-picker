@@ -490,12 +490,3 @@
         }
     };
 })(jQuery);
-
-$(function ()
-{
-    $('input').segmentPicker({
-        //segments: [ {min: 0, max: 23 }, ":", { min: 0, max: 59 }, " ", ["am", "pm"] ]
-        segments: [ {min: 1, max: 12 }, ":", { min: 0, max: 59 }, " ", ["am", "pm"] ]
-        //segments: [{min: 0, max: 24}, "h ", {min: 0, max: 59}, "m"]
-    }).on('change keyup', function(){console.log('$(this).val()', $(this).val());});
-});
