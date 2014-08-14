@@ -15,11 +15,21 @@ We are sharing it simply to let others use it and gather feedback if anyone woul
 If you have any idea, please share it with me or later fork the stuff and come back with pull request (especially after when we will achieve functionality we need).
 
 ##Usage:
-```
+```javascript
 $('input').segmentPicker({
-    segments: [ segment, segment, ... ]
+    segments: [ segment, segment, ... ],
+    onIncrement: function(newVal, oldVal, segments, segmentIdx){ ... },
+    onDecrement: function(newVal, oldVal, segments, segmentIdx){ ... }
 })
 ```
+
+Parameters:
+
+Name | Description
+---- | -----------
+`segments`|An array of segment definitions (see segment types below)
+`onIncrement`|Callback for incrementing action. It is quite useful when you want to change another segment on value change (see 12h time picker example)
+`onDecrement`|Callback for decrementing action. It is quite useful when you want to change another segment on value change (see 12h time picker example)
 
 Possible segments:
 
@@ -33,9 +43,22 @@ Enum          | Array [*Enum1, Enum2 ...* ] | This will act as very simple picke
 
 ### 12h time format picker:
 ```javascript
-$('input').segmentPicker({
-    segments: [{min: 1, max: 12}, ":", {min: 0, max: 59}, " ", ["am", "pm"]]
-})
+$('inut').segmentPicker({
+    segments: [{min: 1, max: 12}, ":", {min: 0, max: 59}, " ", ["am", "pm"]],
+    onIncrement: function(newVal, oldVal, segments, selectedSegment)
+    {
+        if(selectedSegment == 0 && oldVal == "11" && newVal == "12")
+            segments[4].increment();
+        else if(selectedSegment == 2 && oldVal == "59" && newVal == "00")
+            segments[0].increment()
+    },
+    onDecrement: function(newVal, oldVal, segments, selectedSegment){
+        if(selectedSegment == 0 && oldVal == "12" && newVal == "11")
+            segments[4].decrement();
+        else if(selectedSegment == 2 && oldVal == "00" && newVal == "59")
+            segments[0].decrement()
+    }
+});
 ```
 
 ### floating point speed picker:
