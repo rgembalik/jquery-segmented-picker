@@ -298,6 +298,7 @@
                 var settings;
                 var segments = [];
                 var selectedSegment = 0;
+                $this.addClass('segment-picker');
                 var buttons = $('<div class="segment-picker-buttons"><div class="segment-picker-button-up" data-up>▲</div><div data-down class="segment-picker-button-down">▼</div>&nbsp;</div>');
                 if ($this.segmentPicker('isConnected'))
                 {
