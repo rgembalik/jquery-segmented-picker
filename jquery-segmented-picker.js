@@ -42,7 +42,7 @@
 
     }
 
-    function NumberPickerSegment(definition)
+    function NumberPickerSegment(definition, callbacks)
     {
         var userInput = "";
         this.length = Math.max((definition.min + "").length, (definition.max + "").length);
@@ -108,15 +108,22 @@
         };
         this.increment = function ()
         {
+            var oldVal = this.getValue();
+
             var num = parseInt("00000" + userInput);
 
             num++;
-            num = num % definition.max;
+            if(num > definition.max)
+                num = definition.min;
 
             userInput = num + "";
+
+            callbacks.onIncrement.call(this, oldVal);
         };
         this.decrement = function ()
         {
+            var oldVal = this.getValue();
+
             var num = parseInt("00000" + userInput);
             num--;
             if (num < definition.min)
@@ -125,10 +132,13 @@
             }
 
             userInput = num + "";
+
+            callbacks.onDecrement.call(this, oldVal);
+
         }
     }
 
-    function EnumPickerSegment(definition)
+    function EnumPickerSegment(definition, callbacks)
     {
         var maxLen = 0;
         for (var i = 0; i < definition.length; i++)
@@ -242,33 +252,40 @@
         };
         this.increment = function ()
         {
+            var oldVal = this.getValue();
             selectedValue++;
             selectedValue = selectedValue % definition.length;
+            callbacks.onIncrement.call(this, oldVal);
         };
         this.decrement = function ()
         {
+            var oldVal = this.getValue();
+
             selectedValue--;
             if (selectedValue < 0)
             {
                 selectedValue = definition.length + selectedValue;
             }
+
+            callbacks.onIncrement.call(this, oldVal);
         }
     }
 
-    function PickerSegment(definition, startingPosition)
+    function PickerSegment(definition, index, startingPosition, callbacks)
     {
+        this.index = index;
         this.position = startingPosition;
         if (typeof definition == "string")
         {
-            SeparatorPickerSegment.call(this, definition);
+            SeparatorPickerSegment.call(this, definition, callbacks);
         }
         else if (typeof definition.min != "undefined" && typeof definition.max != "undefined")
         {
-            NumberPickerSegment.call(this, definition);
+            NumberPickerSegment.call(this, definition, callbacks);
         }
         else if (definition instanceof Array)
         {
-            EnumPickerSegment.call(this, definition);
+            EnumPickerSegment.call(this, definition, callbacks);
         }
     }
 
@@ -282,6 +299,25 @@
                 var segments = [];
                 var selectedSegment = 0;
                 var buttons = $('<div class="segment-picker-buttons"><div class="segment-picker-button-up" data-up>▲</div><div data-down class="segment-picker-button-down">▼</div>&nbsp;</div>');
+                if ($this.segmentPicker('isConnected'))
+                {
+                    var temp = $this.data('segmentPicker');
+                    settings = $.extend(temp.settings, options);
+                    $this.off('.segmentPicker');
+                }
+                else
+                {
+                    settings = $.extend({
+                        segments: [],
+                        onIncrement: function(){},
+                        onDecrement: function(){}
+                    }, options);
+                }
+
+                $this.data('segmentPicker', {
+                    target: $this,
+                    settings: settings
+                });
 
                 function selectSegment(idx)
                 {
@@ -351,32 +387,19 @@
                     return value;
                 }
 
-                if ($this.segmentPicker('isConnected'))
-                {
-                    var temp = $this.data('segmentPicker');
-                    settings = $.extend(temp.settings, options);
-                    $this.off('.segmentPicker');
-                }
-                else
-                {
-                    settings = $.extend({
-                        segments: [],
-                        onValidate: function (val)
-                        {
-                            return val
-                        }
-                    }, options);
-                }
-
-                $this.data('segmentPicker', {
-                    target: $this,
-                    settings: settings
-                });
-
                 var pos = 0;
                 for (var i = 0; i < settings.segments.length; i++)
                 {
-                    var seg = new PickerSegment(settings.segments[i], pos);
+                    var seg = new PickerSegment(settings.segments[i], i, pos, {
+                        onIncrement:function(oldVal)
+                        {
+                            settings.onIncrement.call($this[0], this.getValue(), oldVal, segments, this.index);
+                        },
+                        onDecrement:function(oldVal)
+                        {
+                            settings.onDecrement.call($this[0], this.getValue(), oldVal, segments, this.index);
+                        }
+                    });
                     pos = pos + seg.length;
                     segments.push(seg);
                 }
@@ -444,7 +467,6 @@
 
                 $this.on('keydown.segmentPicker', function (e)
                 {
-
                     var keyCode = e.which || e.charCode;
                     if(keyCode == 8 || keyCode == 46){
                         segments[selectedSegment].delUserInput();
@@ -460,7 +482,6 @@
 
                         if (keyCode == 37)
                         {
-
                             var prev = findPrevSegment(selectedSegment);
                             if(prev != -1)
                                 selectedSegment = prev;
