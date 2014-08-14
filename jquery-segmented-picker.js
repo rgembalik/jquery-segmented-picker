@@ -450,14 +450,43 @@
                             $this.val(render(segments));
                         }
                     }
+                    //selectSegment(selectedSegment);
 
-                    selectSegment(selectedSegment);
+                    //e.preventDefault();
+                });
+                $this.on('mouseup.segmentPicker', function(e){
                     e.preventDefault();
+                    setTimeout(function(){
+                        selectSegment(selectedSegment);
+                    })
                 });
                 $this.on('mousedown.segmentPicker', function (e)
                 {
-                    $this.focus();
-                    e.preventDefault();
+                    setTimeout(function(){
+                        var minDiff = 9999999;
+                        var pos = $this[0].selectionStart;
+                        var newSegment = selectedSegment;
+                        for (var i = 0; i < segments.length; i++)
+                        {
+                            var segment = segments[i];
+                            if(segment.skipable)
+                                continue;
+                            if(Math.abs(segment.position - pos) < minDiff)
+                            {
+                                minDiff = Math.abs(segment.position - pos);
+                                newSegment = i;
+                            }
+
+                            if(Math.abs(segment.position + segment.length - pos) < minDiff)
+                            {
+                                minDiff = Math.abs(segment.position + segment.length - pos);
+                                newSegment = i;
+                            }
+                        }
+                        selectedSegment = newSegment;
+                        selectSegment(selectedSegment);
+                    });
+
                 });
 
                 $this.on('keyup.segmentPicker', function (e)
