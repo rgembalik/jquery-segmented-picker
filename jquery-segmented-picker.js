@@ -529,7 +529,7 @@
                     h += parseInt($this.css('border-bottom-width'), 10);
                     h += parseInt($this.css('padding-bottom'), 10);
 
-                    buttons.find('div').height(h/2 - 1).css({
+                    buttons.find('div').height(h/2).css({
                         'line-height': (h/2 - 1)+'px',
                         'font-size':(h/2)+'px',
                         'left':'-'+$this.css('margin-right')
