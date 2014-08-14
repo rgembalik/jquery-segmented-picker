@@ -564,6 +564,7 @@
                 {
                     segments[selectedSegment].increment();
                     $this.val(render(segments));
+                    $this.trigger('change');
                     selectSegment(selectedSegment);
                 });
                 buttons.find('[data-down]').on('mousedown mouseup', function (e)
@@ -573,6 +574,7 @@
                 {
                     segments[selectedSegment].decrement();
                     $this.val(render(segments));
+                    $this.trigger('change');
                     selectSegment(selectedSegment);
                 });
             });
