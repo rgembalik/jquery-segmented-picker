@@ -416,7 +416,9 @@
                     $this.val(render(segments));
                 }
 
-
+                $this.on('blur.segmentPicker', function (e){
+                    selectedSegment = 0;
+                });
                 $this.on('keypress.segmentPicker', function (e)
                 {
                     var character = e.ehcich || e.charCode;
@@ -452,7 +454,38 @@
                     }
                     selectSegment(selectedSegment);
 
-                    //e.preventDefault();
+                    var h = $this.height();
+                    h += parseInt($this.css('border-top-width'), 10);
+                    h += parseInt($this.css('padding-top'), 10);
+                    h += parseInt($this.css('border-bottom-width'), 10);
+                    h += parseInt($this.css('padding-bottom'), 10);
+
+                    buttons.find('div').height(h/2).css({
+                        'line-height': (h/2 - 1)+'px',
+                        'font-size':(h/2)+'px',
+                        'left':'-'+$this.css('margin-right')
+                    });
+                    buttons.find('div').first().css({
+                        'top': '-' + $this.css('border-top-width')
+                    });
+                    buttons.find('div').last().css({
+                        'bottom': '-'+ $this.css('border-bottom-width')
+                    });
+                    buttons.css({
+                        'margin-top':$this.css('margin-top'),
+                        'margin-bottom':$this.css('margin-bottom'),
+                        'padding-top':$this.css('padding-top'),
+                        'padding-bottom':$this.css('padding-bottom'),
+                        'font-size':$this.css('font-size'),
+                        'vertical-align':$this.css('vertical-align'),
+                        'line-height': $this.css('line-height'),
+                        'border-top':$this.css('border-top'),
+                        'border-bottom':$this.css('border-bottom'),
+                        'border-top-color':'transparent',
+                        'border-bottom-color':'transparent',
+                        'height': $this.css('height')
+                    });
+                    $this.after(buttons);
                 });
                 $this.on('mouseup.segmentPicker', function(e){
                     e.preventDefault();
@@ -498,6 +531,28 @@
                 $this.on('keydown.segmentPicker', function (e)
                 {
                     var keyCode = e.which || e.charCode;
+                    if(keyCode == 9)
+                    {
+                        if(e.shiftKey)
+                        {
+                            var prev = findPrevSegment(selectedSegment);
+                            if(prev != -1)
+                            {
+                                selectedSegment = prev;
+                                e.preventDefault();
+                            }
+
+                        }
+                        else
+                        {
+                            var next = findNextSegment(selectedSegment);
+                            if(next != -1)
+                            {
+                                selectedSegment = next;
+                                e.preventDefault();
+                            }
+                        }
+                    }
                     if(keyCode == 8 || keyCode == 46){
                         segments[selectedSegment].delUserInput();
                         e.stopPropagation();
@@ -549,41 +604,6 @@
                     {
                         buttons.detach();
                     })
-                });
-
-                $this.on('focus.segmentPicker', function(){
-                    var h = $this.height();
-                    h += parseInt($this.css('border-top-width'), 10);
-                    h += parseInt($this.css('padding-top'), 10);
-                    h += parseInt($this.css('border-bottom-width'), 10);
-                    h += parseInt($this.css('padding-bottom'), 10);
-
-                    buttons.find('div').height(h/2).css({
-                        'line-height': (h/2 - 1)+'px',
-                        'font-size':(h/2)+'px',
-                        'left':'-'+$this.css('margin-right')
-                    });
-                    buttons.find('div').first().css({
-                        'top': '-' + $this.css('border-top-width')
-                    });
-                    buttons.find('div').last().css({
-                        'bottom': '-'+ $this.css('border-bottom-width')
-                    });
-                    buttons.css({
-                        'margin-top':$this.css('margin-top'),
-                        'margin-bottom':$this.css('margin-bottom'),
-                        'padding-top':$this.css('padding-top'),
-                        'padding-bottom':$this.css('padding-bottom'),
-                        'font-size':$this.css('font-size'),
-                        'vertical-align':$this.css('vertical-align'),
-                        'line-height': $this.css('line-height'),
-                        'border-top':$this.css('border-top'),
-                        'border-bottom':$this.css('border-bottom'),
-                        'border-top-color':'transparent',
-                        'border-bottom-color':'transparent',
-                        'height': $this.css('height')
-                    });
-                    $this.after(buttons);
                 });
 
                 buttons.find('[data-up]').on('mousedown mouseup', function (e)
