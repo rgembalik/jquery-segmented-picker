@@ -10,6 +10,8 @@
     width: 0;
     vertical-align: middle;
     border: 0 solid transparent;
+    box-sizing: content-box;
+    z-index: 1;
 }
 .segment-picker-buttons div
 {
