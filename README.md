@@ -9,10 +9,12 @@ That way you can incorporate it in any more complex forms without worrying about
 We will use it mainly as simple time picker, time duration picker and maybe as currency picker.
 
 ##Disclaimer
-This plugin is nowhere near ready. Also it is full of nasty insects. Button positioning may not work in some cases.
+- This plugin is nowhere near ready. 
+- It is full of nasty insects. 
+- Button positioning may not work in some cases.
 
 We are sharing it simply to let others use it and gather feedback if anyone would like to share one.
-If you have any idea, please share it with me or later fork the stuff and come back with pull request (especially after when we will achieve functionality we need).
+If you have any idea, please share it with me or fork the stuff and come back with pull request.
 
 ##Usage:
 ```javascript
@@ -41,7 +43,14 @@ Enum          | Array [*Enum1, Enum2 ...* ] | This will act as very simple picke
 
 ##Usage examples:
 
-### 12h time format picker:
+### simple floating point speed picker:
+```javascript
+$('input').segmentPicker({
+    segments: [{min: 0, max: 999}, ".", {min: 0, max: 99}, " km/h"]
+})
+```
+
+### more advanced 12h time format picker:
 ```javascript
 $('inut').segmentPicker({
     segments: [{min: 1, max: 12}, ":", {min: 0, max: 59}, " ", ["am", "pm"]],
@@ -59,11 +68,4 @@ $('inut').segmentPicker({
             segments[0].decrement()
     }
 });
-```
-
-### floating point speed picker:
-```javascript
-$('input').segmentPicker({
-    segments: [{min: 0, max: 999}, ".", {min: 0, max: 99}, " km/h"]
-})
 ```
