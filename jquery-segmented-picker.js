@@ -281,6 +281,7 @@
                 var settings;
                 var segments = [];
                 var selectedSegment = 0;
+                var buttons = $('<div class="segment-picker-buttons"><div class="segment-picker-button-up" data-up>▲</div><div data-down class="segment-picker-button-down">▼</div>&nbsp;</div>');
 
                 function selectSegment(idx)
                 {
@@ -467,7 +468,68 @@
                 $this.on('cut.segmentPicker copy.segmentPicker paste.segmentPicker', function (e)
                 {
                     e.preventDefault();
-                })
+                });
+
+                $this.on('blur.segmentPicker', function(){
+                    setTimeout(function ()
+                    {
+                        //buttons.detach();
+                    })
+                });
+
+                $this.on('focus.segmentPicker', function(){
+                    var h = $this.height();
+                    h += parseInt($this.css('border-top-width'), 10);
+                    h += parseInt($this.css('padding-top'), 10);
+                    h += parseInt($this.css('border-bottom-width'), 10);
+                    h += parseInt($this.css('padding-bottom'), 10);
+
+                    buttons.find('div').height(h/2 - 1).css({
+                        'line-height': (h/2 - 1)+'px',
+                        'font-size':(h/2)+'px',
+                        'left':'-'+$this.css('margin-right')
+                    });
+                    buttons.find('div').first().css({
+                        'top': '-' + $this.css('border-top-width')
+                    });
+                    buttons.find('div').last().css({
+                        'bottom': '-'+ $this.css('border-bottom-width')
+                    });
+                    buttons.css({
+                        'margin-top':$this.css('margin-top'),
+                        'margin-bottom':$this.css('margin-bottom'),
+                        'padding-top':$this.css('padding-top'),
+                        'padding-bottom':$this.css('padding-bottom'),
+                        'font-size':$this.css('font-size'),
+                        'vertical-align':$this.css('vertical-align'),
+                        'line-height': $this.css('line-height'),
+                        'border-top':$this.css('border-top'),
+                        'border-bottom':$this.css('border-bottom'),
+                        'border-top-color':'transparent',
+                        'border-bottom-color':'transparent',
+                        'height': $this.css('height')
+                    });
+                    $this.after(buttons);
+                });
+
+                buttons.find('[data-up]').on('mousedown mouseup', function (e)
+                {
+                    e.preventDefault();
+                }).on('mousedown', function ()
+                {
+                    segments[selectedSegment].increment();
+                    $this.val(render(segments));
+                    selectSegment(selectedSegment);
+                });
+                buttons.find('[data-down]').on('mousedown mouseup', function (e)
+                {
+                    e.preventDefault();
+                }).on('mousedown', function ()
+                {
+                    segments[selectedSegment].decrement();
+                    $this.val(render(segments));
+                    selectSegment(selectedSegment);
+                });
             });
         },
         isConnected: function ()

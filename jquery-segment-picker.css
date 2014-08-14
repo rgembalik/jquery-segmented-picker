@@ -1,0 +1,37 @@
+.segment-picker-buttons, .segment-picker-buttons div
+{
+    margin: 0;
+    padding: 0;
+}
+.segment-picker-buttons
+{
+    display: inline-block;
+    position: relative;
+    width: 0;
+    vertical-align: middle;
+    border: 0 solid transparent;
+}
+.segment-picker-buttons div
+{
+    position: absolute;
+    height: 0.75em;
+    border: 1px solid #777;
+    cursor: pointer;
+    background: #fff;
+}
+.segment-picker-buttons div:hover
+{
+    background: #ddd;
+}
+.segment-picker-buttons .segment-picker-button-up
+{
+    top: 0;
+    border-top-right-radius: 4px;
+    border-bottom: none;
+}
+.segment-picker-buttons .segment-picker-button-down
+{
+    bottom: 0;
+    border-bottom-right-radius: 4px;
+    border-top: none;
+}

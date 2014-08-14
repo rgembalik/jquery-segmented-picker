@@ -9,8 +9,7 @@ That way you can incorporate it in any more complex forms without worrying about
 We will use it mainly as simple time picker, time duration picker and maybe as currency picker.
 
 ##Disclaimer
-This plugin is nowhere near ready. Also it is full of nasty insects. There will be additional stuff like up/down buttons
-which will help provide spinner functionality and a ton of bug fixes.
+This plugin is nowhere near ready. Also it is full of nasty insects. Button positioning may not work in some cases.
 
 We are sharing it simply to let others use it and gather feedback if anyone would like to share one.
 If you have any idea, please share it with me or later fork the stuff and come back with pull request (especially after when we will achieve functionality we need).
@@ -24,11 +23,11 @@ $('input').segmentPicker({
 
 Possible segments:
 
-Segment type  | Description   | Example
-------------- | ------------- | -------
-Numeric       | This segment will try to provide simple numeric spinner functionality on given segment | `{min:1, max:12}` - definition for hours in 12h format
-Separator     | This segment is inactive for editing and will act simply as decoration for format      |   `"km/h "` - units are nice example of decorators
-Enum          | This will act as very simple picker for already defined set of values |  `["am", "pm"]` - am/pm format
+Segment type | Expected parameter | Description   | Example
+------------- | -------- | ------------- | -------
+Numeric       | Object {min:*min*, max:*max*} | This segment will try to provide simple numeric spinner functionality on given segment | `{min:1, max:12}` - definition for hours in 12h format
+Separator     | String "*separator*" | This segment is inactive for editing and will act simply as decoration for format      |   `"km/h "` - units are nice example of decorators
+Enum          | Array [*Enum1, Enum2 ...* ] | This will act as very simple picker for already defined set of values |  `["am", "pm"]` - am/pm format
 
 ##Usage examples:
 
