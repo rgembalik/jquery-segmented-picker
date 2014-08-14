@@ -302,6 +302,28 @@
                     return value;
                 }
 
+                function findNextSegment(from)
+                {
+                    for(var i = from + 1; i < segments.length; i++)
+                    {
+                        if(!segments[i].skipable)
+                            return i;
+                    }
+
+                    return -1;
+                }
+
+                function findPrevSegment(from)
+                {
+                    for(var i = from - 1; i > -1; i--)
+                    {
+                        if(!segments[i].skipable)
+                            return i;
+                    }
+
+                    return -1;
+                }
+
                 function parseSegments(value)
                 {
                     var reg = new RegExp('' + getReg() + '', 'i');
@@ -381,9 +403,9 @@
                         $this.val(render(segments));
                         if(segments[selectedSegment].isUserInputExplicit())
                         {
-                            do {
-                                selectedSegment = Math.min(selectedSegment + 1, segments.length - 1);
-                            } while (segments[selectedSegment].skipable && selectedSegment < segments.length - 1);
+                            var next = findNextSegment(selectedSegment);
+                            if(next != -1)
+                                selectedSegment = next;
                         }
                         selectSegment(selectedSegment);
                     }
@@ -438,16 +460,18 @@
 
                         if (keyCode == 37)
                         {
-                            do {
-                                selectedSegment = Math.max(selectedSegment - 1, 0);
-                            } while (segments[selectedSegment].skipable && selectedSegment > 0);
+
+                            var prev = findPrevSegment(selectedSegment);
+                            if(prev != -1)
+                                selectedSegment = prev;
 
                         }
                         else if (keyCode == 39)
                         {
-                            do {
-                                selectedSegment = Math.min(selectedSegment + 1, segments.length - 1);
-                            } while (segments[selectedSegment].skipable && selectedSegment < segments.length - 1);
+
+                            var next = findNextSegment(selectedSegment);
+                            if(next != -1)
+                                selectedSegment = next;
                         }
                         else if (keyCode == 38)
                         {
