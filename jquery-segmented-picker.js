@@ -450,7 +450,7 @@
                             $this.val(render(segments));
                         }
                     }
-                    //selectSegment(selectedSegment);
+                    selectSegment(selectedSegment);
 
                     //e.preventDefault();
                 });
