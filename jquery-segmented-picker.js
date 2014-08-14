@@ -424,7 +424,6 @@
                 {
 
                     var keyCode = e.which || e.charCode;
-                    console.log('keyCode', keyCode);
                     if(keyCode == 8 || keyCode == 46){
                         segments[selectedSegment].delUserInput();
                         e.stopPropagation();
@@ -473,7 +472,7 @@
                 $this.on('blur.segmentPicker', function(){
                     setTimeout(function ()
                     {
-                        //buttons.detach();
+                        buttons.detach();
                     })
                 });
 
