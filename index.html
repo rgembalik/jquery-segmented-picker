@@ -255,6 +255,55 @@
 <span class="p">});</span>
 </pre>
             </div>
+            <h2>
+                <a name="even-more-examples"
+                   class="anchor"
+                   href="#even-more-examples"><span class="octicon octicon-link"></span></a>Even more examples:</h2>
+
+            <div>
+                <label>
+                    24h time picker
+                    <input type="text" id="24h-picker" value="19:00" style="padding: 10px"/>
+                </label>
+            </div>
+            <div>
+                <label>
+                    Duration picker - for stoppers etc.
+                    <input type="text" id="duration-picker" value="12h 17m" style="margin:10px"/>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Currency picker
+                    <input type="text" id="currency-picker" value="12.99 USD"/>
+                </label>
+            </div>
+            <script type="text/javascript">
+                $(function ()
+                {
+                    $('#24h-picker').segmentPicker({
+                        segments: [{min: 0, max: 23}, ":", {min: 0, max: 59}],
+                        onIncrement: function(newVal, oldVal, segments, selectedSegment)
+                        {
+                            if(selectedSegment == 2 && oldVal == "59" && newVal == "00")
+                                segments[0].increment()
+                        },
+                        onDecrement: function(newVal, oldVal, segments, selectedSegment){
+                            if(selectedSegment == 2 && oldVal == "00" && newVal == "59")
+                                segments[0].decrement()
+                        }
+                    });
+
+                    $('#duration-picker').segmentPicker({
+                        segments: [{min: 0, max: 24}, "h ", {min: 0, max: 59}, "m"]
+                    });
+
+                    $('#currency-picker').segmentPicker({
+                        segments: [{min: 1, max: 24}, ".", {min: 0, max: 99}, " ", ["USD", "EUR"]]
+                    });
+                });
+            </script>
         </section>
 
         <aside id="sidebar">
