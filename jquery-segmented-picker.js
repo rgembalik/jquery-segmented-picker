@@ -528,6 +528,19 @@
                     e.preventDefault();
                 });
 
+                $this.on('change', function(){
+                    var val = parseSegments($this.val());
+
+                    if (val)
+                    {
+                        for (var i = 0; i < segments.length; i++)
+                        {
+                            segments[i].setUserInput(val[i]);
+                        }
+                        $this.val(render(segments));
+                    }
+                });
+
                 $this.on('keydown.segmentPicker', function (e)
                 {
                     var keyCode = e.which || e.charCode;
