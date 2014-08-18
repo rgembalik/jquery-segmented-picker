@@ -462,7 +462,7 @@
 
                     buttons.find('div').height(h/2).css({
                         'line-height': (h/2 - 1)+'px',
-                        'font-size':(h/2)+'px',
+                        'font-size':((h * 0.8)/2)+'px',
                         'left':'-'+$this.css('margin-right')
                     });
                     buttons.find('div').first().css({
