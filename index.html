@@ -188,9 +188,9 @@
                    href="#more-advanced-12h-time-format-picker"><span class="octicon octicon-link"></span></a>more
                 advanced 12h time format picker:</h3>
 
-            <input id="12h-picker" type="text" value="11:59 pm"/>
+            <input id="a12h-picker" type="text" value="11:59 pm"/>
             <script>
-                $('#12h-picker').segmentPicker({
+                $('#a12h-picker').segmentPicker({
                     segments: [{min: 1, max: 12}, ":", {min: 0, max: 59}, " ", ["am", "pm"]],
                     onIncrement: function(newVal, oldVal, segments, selectedSegment)
                     {
