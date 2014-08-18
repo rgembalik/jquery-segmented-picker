@@ -528,7 +528,7 @@
                     e.preventDefault();
                 });
 
-                $this.on('change', function(){
+                $this.on('change.segmentPicker', function(){
                     var val = parseSegments($this.val());
 
                     if (val)
