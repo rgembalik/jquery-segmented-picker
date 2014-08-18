@@ -478,12 +478,16 @@ footer a:hover {
 
 #fp-picker
 {
-    width: 75px;
+    width: 78px;
+    font-size: 14px;
+    padding: 5px;
 }
 
 #a12h-picker
 {
-    width: 56px;
+    width: 59px;
+    font-size: 14px;
+    padding: 5px;
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
