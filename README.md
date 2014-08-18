@@ -1,4 +1,5 @@
 #jquery-segmented-picker
+##[Try it](http://rgembalik.github.io/jquery-segmented-picker/)
 ##Description
 This plugin is simply wrapper for text input to become picker for any format you wish.
 It is meant to be simple and to look simple while giving you some control over what user writes.
