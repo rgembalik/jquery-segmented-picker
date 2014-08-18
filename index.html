@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -9,162 +9,273 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="javascripts/jquery-segmented-picker.js"></script>
+    <link rel="stylesheet" type="text/css" href="javascripts/jquery-segment-picker.css" media="screen">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <title>Jquery-segmented-picker by rgembalik</title>
-  </head>
+</head>
 
-  <body>
-    <header>
-      <div class="inner">
+<body>
+<header>
+    <div class="inner">
         <h1>Jquery-segmented-picker</h1>
+
         <h2>This jquery plugin is simply wrapper for text input to become picker for any format you wish. </h2>
-        <a href="https://github.com/rgembalik/jquery-segmented-picker" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+        <a href="https://github.com/rgembalik/jquery-segmented-picker" class="button">
+            <small>View project on</small>
+            GitHub</a>
+    </div>
+</header>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
+<div id="content-wrapper">
+    <div class="inner clearfix">
         <section id="main-content">
-          <h1>
-<a name="jquery-segmented-picker" class="anchor" href="#jquery-segmented-picker"><span class="octicon octicon-link"></span></a>jquery-segmented-picker</h1>
+            <h1>
+                <a name="jquery-segmented-picker"
+                   class="anchor"
+                   href="#jquery-segmented-picker"><span class="octicon octicon-link"></span></a>jquery-segmented-picker
+            </h1>
 
-<h2>
-<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description</h2>
+            <h2>
+                <a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description
+            </h2>
 
-<p>This plugin is simply wrapper for text input to become picker for any format you wish.
-It is meant to be simple and to look simple while giving you some control over what user writes.</p>
+            <p>This plugin is simply wrapper for text input to become picker for any format you wish.
+                It is meant to be simple and to look simple while giving you some control over what user writes.</p>
 
-<p>The main idea in it is to avoid showing complicated popups while there is possibility to use keyboard only.
-That way you can incorporate it in any more complex forms without worrying about complicating layout further.</p>
+            <p>The main idea in it is to avoid showing complicated popups while there is possibility to use keyboard
+                only.
+                That way you can incorporate it in any more complex forms without worrying about complicating layout
+                further.</p>
 
-<p>We will use it mainly as simple time picker, time duration picker and maybe as currency picker.</p>
+            <p>We will use it mainly as simple time picker, time duration picker and maybe as currency picker.</p>
 
-<h2>
-<a name="disclaimer" class="anchor" href="#disclaimer"><span class="octicon octicon-link"></span></a>Disclaimer</h2>
+            <h2>
+                <a name="disclaimer" class="anchor" href="#disclaimer"><span class="octicon octicon-link"></span></a>Disclaimer
+            </h2>
 
-<ul>
-<li>This plugin is nowhere near ready. </li>
-<li>It is full of nasty insects. </li>
-<li>Button positioning may not work in some cases.</li>
-</ul><p>We are sharing it simply to let others use it and gather feedback if anyone would like to share one.
-If you have any idea, please share it with me or fork the stuff and come back with pull request.</p>
+            <ul>
+                <li>This plugin is nowhere near ready.</li>
+                <li>It is full of nasty insects.</li>
+                <li>Button positioning may not work in some cases.</li>
+            </ul>
+            <p>We are sharing it simply to let others use it and gather feedback if anyone would like to share one.
+                If you have any idea, please share it with me or fork the stuff and come back with pull request.</p>
 
-<h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage:</h2>
+            <h2>
+                <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage:</h2>
 
-<div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'input'</span><span class="p">).</span><span class="nx">segmentPicker</span><span class="p">({</span>
-    <span class="nx">segments</span><span class="o">:</span> <span class="p">[</span> <span class="nx">segment</span><span class="p">,</span> <span class="nx">segment</span><span class="p">,</span> <span class="p">...</span> <span class="p">],</span>
-    <span class="nx">onIncrement</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newVal</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">,</span> <span class="nx">segments</span><span class="p">,</span> <span class="nx">segmentIdx</span><span class="p">){</span> <span class="p">...</span> <span class="p">},</span>
-    <span class="nx">onDecrement</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newVal</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">,</span> <span class="nx">segments</span><span class="p">,</span> <span class="nx">segmentIdx</span><span class="p">){</span> <span class="p">...</span> <span class="p">}</span>
+            <div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span
+                    class="s1">'input'</span><span class="p">).</span><span class="nx">segmentPicker</span><span class="p">({</span>
+    <span class="nx">segments</span><span class="o">:</span> <span class="p">[</span> <span class="nx">segment</span><span
+                        class="p">,</span> <span class="nx">segment</span><span class="p">,</span> <span class="p">...</span> <span
+                        class="p">],</span>
+    <span class="nx">onIncrement</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span
+                        class="nx">newVal</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">,</span> <span
+                        class="nx">segments</span><span class="p">,</span> <span class="nx">segmentIdx</span><span class="p">){</span> <span
+                        class="p">...</span> <span class="p">},</span>
+    <span class="nx">onDecrement</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span
+                        class="nx">newVal</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">,</span> <span
+                        class="nx">segments</span><span class="p">,</span> <span class="nx">segmentIdx</span><span class="p">){</span> <span
+                        class="p">...</span> <span class="p">}</span>
 <span class="p">})</span>
-</pre></div>
+</pre>
+            </div>
 
-<p>Parameters:</p>
+            <p>Parameters:</p>
 
-<table>
-<thead><tr>
-<th>Name</th>
-<th>Description</th>
-</tr></thead>
-<tbody>
-<tr>
-<td><code>segments</code></td>
-<td>An array of segment definitions (see segment types below)</td>
-</tr>
-<tr>
-<td><code>onIncrement</code></td>
-<td>Callback for incrementing action. It is quite useful when you want to change another segment on value change (see 12h time picker example)</td>
-</tr>
-<tr>
-<td><code>onDecrement</code></td>
-<td>Callback for decrementing action. It is quite useful when you want to change another segment on value change (see 12h time picker example)</td>
-</tr>
-</tbody>
-</table><p>Possible segments:</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><code>segments</code></td>
+                    <td>An array of segment definitions (see segment types below)</td>
+                </tr>
+                <tr>
+                    <td><code>onIncrement</code></td>
+                    <td>Callback for incrementing action. It is quite useful when you want to change another segment on
+                        value change (see 12h time picker example)
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>onDecrement</code></td>
+                    <td>Callback for decrementing action. It is quite useful when you want to change another segment on
+                        value change (see 12h time picker example)
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p>Possible segments:</p>
 
-<table>
-<thead><tr>
-<th>Segment type</th>
-<th>Expected parameter</th>
-<th>Description</th>
-<th>Example</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Numeric</td>
-<td>Object {min:<em>min</em>, max:<em>max</em>}</td>
-<td>This segment will try to provide simple numeric spinner functionality on given segment</td>
-<td>
-<code>{min:1, max:12}</code> - definition for hours in 12h format</td>
-</tr>
-<tr>
-<td>Separator</td>
-<td>String "<em>separator</em>"</td>
-<td>This segment is inactive for editing and will act simply as decoration for format</td>
-<td>
-<code>"km/h "</code> - units are nice example of decorators</td>
-</tr>
-<tr>
-<td>Enum</td>
-<td>Array [<em>Enum1, Enum2 ...</em> ]</td>
-<td>This will act as very simple picker for already defined set of values</td>
-<td>
-<code>["am", "pm"]</code> - am/pm format</td>
-</tr>
-</tbody>
-</table><h2>
-<a name="usage-examples" class="anchor" href="#usage-examples"><span class="octicon octicon-link"></span></a>Usage examples:</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Segment type</th>
+                    <th>Expected parameter</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Numeric</td>
+                    <td>Object {min:<em>min</em>, max:<em>max</em>}</td>
+                    <td>This segment will try to provide simple numeric spinner functionality on given segment</td>
+                    <td>
+                        <code>{min:1, max:12}</code> - definition for hours in 12h format
+                    </td>
+                </tr>
+                <tr>
+                    <td>Separator</td>
+                    <td>String "<em>separator</em>"</td>
+                    <td>This segment is inactive for editing and will act simply as decoration for format</td>
+                    <td>
+                        <code>"km/h"</code> - units are nice example of decorators
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enum</td>
+                    <td>Array [<em>Enum1, Enum2 ...</em> ]</td>
+                    <td>This will act as very simple picker for already defined set of values</td>
+                    <td>
+                        <code>["am", "pm"]</code> - am/pm format
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>
+                <a name="usage-examples"
+                   class="anchor"
+                   href="#usage-examples"><span class="octicon octicon-link"></span></a>Usage examples:</h2>
 
-<h3>
-<a name="simple-floating-point-speed-picker" class="anchor" href="#simple-floating-point-speed-picker"><span class="octicon octicon-link"></span></a>simple floating point speed picker:</h3>
+            <h3>
+                <a name="simple-floating-point-speed-picker"
+                   class="anchor"
+                   href="#simple-floating-point-speed-picker"><span class="octicon octicon-link"></span></a>simple
+                floating point speed picker:</h3>
 
-<div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'input'</span><span class="p">).</span><span class="nx">segmentPicker</span><span class="p">({</span>
-    <span class="nx">segments</span><span class="o">:</span> <span class="p">[{</span><span class="nx">min</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">max</span><span class="o">:</span> <span class="mi">999</span><span class="p">},</span> <span class="s2">"."</span><span class="p">,</span> <span class="p">{</span><span class="nx">min</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">max</span><span class="o">:</span> <span class="mi">99</span><span class="p">},</span> <span class="s2">" km/h"</span><span class="p">]</span>
+            <input id="fp-picker" type="text" value="123.00 km/h"/>
+            <script>
+                $('#fp-picker').segmentPicker({
+                    segments: [{min: 0, max: 999}, ".", {min: 0, max: 99}, " km/h"]
+                })
+            </script>
+
+            <div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span
+                    class="s1">'input'</span><span class="p">).</span><span class="nx">segmentPicker</span><span class="p">({</span>
+    <span class="nx">segments</span><span class="o">:</span> <span class="p">[{</span><span class="nx">min</span><span
+                        class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">max</span><span
+                        class="o">:</span> <span class="mi">999</span><span class="p">},</span> <span class="s2">"."</span><span
+                        class="p">,</span> <span class="p">{</span><span class="nx">min</span><span class="o">:</span> <span
+                        class="mi">0</span><span class="p">,</span> <span class="nx">max</span><span class="o">:</span> <span
+                        class="mi">99</span><span class="p">},</span> <span class="s2">" km/h"</span><span class="p">]</span>
 <span class="p">})</span>
-</pre></div>
+</pre>
+            </div>
 
-<h3>
-<a name="more-advanced-12h-time-format-picker" class="anchor" href="#more-advanced-12h-time-format-picker"><span class="octicon octicon-link"></span></a>more advanced 12h time format picker:</h3>
+            <h3>
+                <a name="more-advanced-12h-time-format-picker"
+                   class="anchor"
+                   href="#more-advanced-12h-time-format-picker"><span class="octicon octicon-link"></span></a>more
+                advanced 12h time format picker:</h3>
 
-<div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'inut'</span><span class="p">).</span><span class="nx">segmentPicker</span><span class="p">({</span>
-    <span class="nx">segments</span><span class="o">:</span> <span class="p">[{</span><span class="nx">min</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">max</span><span class="o">:</span> <span class="mi">12</span><span class="p">},</span> <span class="s2">":"</span><span class="p">,</span> <span class="p">{</span><span class="nx">min</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">max</span><span class="o">:</span> <span class="mi">59</span><span class="p">},</span> <span class="s2">" "</span><span class="p">,</span> <span class="p">[</span><span class="s2">"am"</span><span class="p">,</span> <span class="s2">"pm"</span><span class="p">]],</span>
-    <span class="nx">onIncrement</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newVal</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">,</span> <span class="nx">segments</span><span class="p">,</span> <span class="nx">selectedSegment</span><span class="p">)</span>
+            <input id="12h-picker" type="text" value="11:59 pm"/>
+            <script>
+                $('#12h-picker').segmentPicker({
+                    segments: [{min: 1, max: 12}, ":", {min: 0, max: 59}, " ", ["am", "pm"]],
+                    onIncrement: function(newVal, oldVal, segments, selectedSegment)
+                    {
+                        if(selectedSegment == 0 && oldVal == "11" && newVal == "12")
+                            segments[4].increment();
+                        else if(selectedSegment == 2 && oldVal == "59" && newVal == "00")
+                            segments[0].increment()
+                    },
+                    onDecrement: function(newVal, oldVal, segments, selectedSegment){
+                        if(selectedSegment == 0 && oldVal == "12" && newVal == "11")
+                            segments[4].decrement();
+                        else if(selectedSegment == 2 && oldVal == "00" && newVal == "59")
+                            segments[0].decrement()
+                    }
+                });
+            </script>
+            <div class="highlight highlight-javascript"><pre><span class="nx">$</span><span class="p">(</span><span
+                    class="s1">'input'</span><span class="p">).</span><span class="nx">segmentPicker</span><span class="p">({</span>
+    <span class="nx">segments</span><span class="o">:</span> <span class="p">[{</span><span class="nx">min</span><span
+                        class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">max</span><span
+                        class="o">:</span> <span class="mi">12</span><span class="p">},</span> <span class="s2">":"</span><span
+                        class="p">,</span> <span class="p">{</span><span class="nx">min</span><span class="o">:</span> <span
+                        class="mi">0</span><span class="p">,</span> <span class="nx">max</span><span class="o">:</span> <span
+                        class="mi">59</span><span class="p">},</span> <span class="s2">" "</span><span class="p">,</span> <span
+                        class="p">[</span><span class="s2">"am"</span><span class="p">,</span> <span class="s2">"pm"</span><span
+                        class="p">]],</span>
+    <span class="nx">onIncrement</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span
+                        class="nx">newVal</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">,</span> <span
+                        class="nx">segments</span><span class="p">,</span> <span class="nx">selectedSegment</span><span
+                        class="p">)</span>
     <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">selectedSegment</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">oldVal</span> <span class="o">==</span> <span class="s2">"11"</span> <span class="o">&amp;&amp;</span> <span class="nx">newVal</span> <span class="o">==</span> <span class="s2">"12"</span><span class="p">)</span>
-            <span class="nx">segments</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nx">increment</span><span class="p">();</span>
-        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">selectedSegment</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nx">oldVal</span> <span class="o">==</span> <span class="s2">"59"</span> <span class="o">&amp;&amp;</span> <span class="nx">newVal</span> <span class="o">==</span> <span class="s2">"00"</span><span class="p">)</span>
-            <span class="nx">segments</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">increment</span><span class="p">()</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">selectedSegment</span> <span class="o">==</span> <span
+                        class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">oldVal</span> <span class="o">==</span> <span
+                        class="s2">"11"</span> <span class="o">&amp;&amp;</span> <span class="nx">newVal</span> <span
+                        class="o">==</span> <span class="s2">"12"</span><span class="p">)</span>
+            <span class="nx">segments</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span
+                        class="nx">increment</span><span class="p">();</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">selectedSegment</span> <span
+                        class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nx">oldVal</span> <span
+                        class="o">==</span> <span class="s2">"59"</span> <span class="o">&amp;&amp;</span> <span class="nx">newVal</span> <span
+                        class="o">==</span> <span class="s2">"00"</span><span class="p">)</span>
+            <span class="nx">segments</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span
+                        class="nx">increment</span><span class="p">()</span>
     <span class="p">},</span>
-    <span class="nx">onDecrement</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newVal</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">,</span> <span class="nx">segments</span><span class="p">,</span> <span class="nx">selectedSegment</span><span class="p">){</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">selectedSegment</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">oldVal</span> <span class="o">==</span> <span class="s2">"12"</span> <span class="o">&amp;&amp;</span> <span class="nx">newVal</span> <span class="o">==</span> <span class="s2">"11"</span><span class="p">)</span>
-            <span class="nx">segments</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nx">decrement</span><span class="p">();</span>
-        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">selectedSegment</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nx">oldVal</span> <span class="o">==</span> <span class="s2">"00"</span> <span class="o">&amp;&amp;</span> <span class="nx">newVal</span> <span class="o">==</span> <span class="s2">"59"</span><span class="p">)</span>
-            <span class="nx">segments</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">decrement</span><span class="p">()</span>
+    <span class="nx">onDecrement</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span
+                        class="nx">newVal</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">,</span> <span
+                        class="nx">segments</span><span class="p">,</span> <span class="nx">selectedSegment</span><span
+                        class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">selectedSegment</span> <span class="o">==</span> <span
+                        class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">oldVal</span> <span class="o">==</span> <span
+                        class="s2">"12"</span> <span class="o">&amp;&amp;</span> <span class="nx">newVal</span> <span
+                        class="o">==</span> <span class="s2">"11"</span><span class="p">)</span>
+            <span class="nx">segments</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span
+                        class="nx">decrement</span><span class="p">();</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">selectedSegment</span> <span
+                        class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nx">oldVal</span> <span
+                        class="o">==</span> <span class="s2">"00"</span> <span class="o">&amp;&amp;</span> <span class="nx">newVal</span> <span
+                        class="o">==</span> <span class="s2">"59"</span><span class="p">)</span>
+            <span class="nx">segments</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span
+                        class="nx">decrement</span><span class="p">()</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</pre></div>
+</pre>
+            </div>
         </section>
 
         <aside id="sidebar">
-          <a href="https://github.com/rgembalik/jquery-segmented-picker/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/rgembalik/jquery-segmented-picker/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+            <a href="https://github.com/rgembalik/jquery-segmented-picker/zipball/master" class="button">
+                <small>Download</small>
+                .zip file
+            </a>
+            <a href="https://github.com/rgembalik/jquery-segmented-picker/tarball/master" class="button">
+                <small>Download</small>
+                .tar.gz file
+            </a>
 
-          <p class="repo-owner"><a href="https://github.com/rgembalik/jquery-segmented-picker"></a> is maintained by <a href="https://github.com/rgembalik">rgembalik</a>.</p>
+            <p class="repo-owner"><a href="https://github.com/rgembalik/jquery-segmented-picker"></a> is maintained by
+                <a href="https://github.com/rgembalik">rgembalik</a>.</p>
 
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+            <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme
+                by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
         </aside>
-      </div>
     </div>
+</div>
 
-  
-  </body>
+
+</body>
 </html>
