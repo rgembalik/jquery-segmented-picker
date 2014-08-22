@@ -528,7 +528,7 @@
                     e.preventDefault();
                 });
 
-                $this.on('change.segmentPicker', function(){
+                $this.on('update.segmentPicker change.segmentPicker', function(){
                     var val = parseSegments($this.val());
 
                     if (val)
