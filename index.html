@@ -4,13 +4,24 @@
 <head>
     <meta charset="utf-8"/>
     <title></title>
-    <!--<script data-require="jquery" data-semver="2.1.1" src="jquery.min.js"></script>
-    --><script data-require="jquery" data-semver="2.1.1" src="jquery-1.7.2.min.js"></script>
+    <script data-require="jquery" data-semver="2.1.1" src="jquery.min.js"></script>
+   <!-- <script data-require="jquery" data-semver="2.1.1" src="jquery-1.7.2.min.js"></script>-->
     <script src="jquery-segmented-picker.js"></script>
     <link rel="stylesheet" type="text/css" href="jquery-segment-picker.css"/>
     <script type="text/javascript">
         $(function ()
         {
+            $('#nospin').segmentPicker({
+                segments: [{ min: 0, max: 9 }, "-", { min: 00, max: 99 }, "-", { min: 000, max: 999 }, "-", { min: 0000, max: 9999 }],
+                onBlur: function( segments)
+                {
+                    $("#RepVal").text($(this).val());
+                },
+                showSpinner: false
+
+            });
+
+
             $('#12h-picker').segmentPicker({
                 segments: [{min: 1, max: 12}, ":", {min: 0, max: 59}, " ", ["am", "pm"]],
                 onIncrement: function(newVal, oldVal, segments, selectedSegment)
@@ -102,6 +113,21 @@ box-sizing: border-box;"/>
         <input type="text" id="currency-picker" value="12.99 USD"/>
     </label>
 </div>
+
+    
+<div>
+    <label>
+        No Spinner
+        <input type="text" id="nospin" value="1-01-001-0001"/>
+    </label>
+</div>
+
+    <div>
+        <label>
+            Reported value:
+        </label>
+        <span id="RepVal">...</span>
+    </div>
 </body>
 
 </html>

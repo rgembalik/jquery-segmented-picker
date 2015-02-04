@@ -311,7 +311,9 @@
                     settings = $.extend({
                         segments: [],
                         onIncrement: function(){},
-                        onDecrement: function(){}
+                        onDecrement: function(){},
+                        onBlur: function(){},
+                        showSpinner: true
                     }, options);
                 }
 
@@ -418,6 +420,7 @@
 
                 $this.on('blur.segmentPicker', function (e){
                     selectedSegment = 0;
+                    settings.onBlur.call($this, segments);
                 });
                 $this.on('keypress.segmentPicker', function (e)
                 {
@@ -454,38 +457,41 @@
                     }
                     selectSegment(selectedSegment);
 
-                    var h = $this.height();
-                    h += parseInt($this.css('border-top-width'), 10);
-                    h += parseInt($this.css('padding-top'), 10);
-                    h += parseInt($this.css('border-bottom-width'), 10);
-                    h += parseInt($this.css('padding-bottom'), 10);
+                    if (settings.showSpinner) {
 
-                    buttons.find('div').height(h/2).css({
-                        'line-height': (h/2 - 1)+'px',
-                        'font-size':((h * 0.8)/2)+'px',
-                        'left':'-'+$this.css('margin-right')
-                    });
-                    buttons.find('div').first().css({
-                        'top': '-' + $this.css('border-top-width')
-                    });
-                    buttons.find('div').last().css({
-                        'bottom': '-'+ $this.css('border-bottom-width')
-                    });
-                    buttons.css({
-                        'margin-top':$this.css('margin-top'),
-                        'margin-bottom':$this.css('margin-bottom'),
-                        'padding-top':$this.css('padding-top'),
-                        'padding-bottom':$this.css('padding-bottom'),
-                        'font-size':$this.css('font-size'),
-                        'vertical-align':$this.css('vertical-align'),
-                        'line-height': $this.css('line-height'),
-                        'border-top':$this.css('border-top'),
-                        'border-bottom':$this.css('border-bottom'),
-                        'border-top-color':'transparent',
-                        'border-bottom-color':'transparent',
-                        'height': $this.css('height')
-                    });
-                    $this.after(buttons);
+                        var h = $this.height();
+                        h += parseInt($this.css('border-top-width'), 10);
+                        h += parseInt($this.css('padding-top'), 10);
+                        h += parseInt($this.css('border-bottom-width'), 10);
+                        h += parseInt($this.css('padding-bottom'), 10);
+
+                        buttons.find('div').height(h / 2).css({
+                            'line-height': (h / 2 - 1) + 'px',
+                            'font-size': ((h * 0.8) / 2) + 'px',
+                            'left': '-' + $this.css('margin-right')
+                        });
+                        buttons.find('div').first().css({
+                            'top': '-' + $this.css('border-top-width')
+                        });
+                        buttons.find('div').last().css({
+                            'bottom': '-' + $this.css('border-bottom-width')
+                        });
+                        buttons.css({
+                            'margin-top': $this.css('margin-top'),
+                            'margin-bottom': $this.css('margin-bottom'),
+                            'padding-top': $this.css('padding-top'),
+                            'padding-bottom': $this.css('padding-bottom'),
+                            'font-size': $this.css('font-size'),
+                            'vertical-align': $this.css('vertical-align'),
+                            'line-height': $this.css('line-height'),
+                            'border-top': $this.css('border-top'),
+                            'border-bottom': $this.css('border-bottom'),
+                            'border-top-color': 'transparent',
+                            'border-bottom-color': 'transparent',
+                            'height': $this.css('height')
+                        });
+                        $this.after(buttons);
+                    }
                 });
                 $this.on('mouseup.segmentPicker', function(e){
                     e.preventDefault();
